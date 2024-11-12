@@ -1,0 +1,53 @@
+# Ignore node_modules folder
+node_modules/
+
+# Ignore log files
+*.log
+
+# Ignore environment files
+config.env
+.env.local
+.env.*.local
+
+# Ignore system files
+.DS_Store
+Thumbs.db
+
+# Ignore coverage reports
+coverage/
+*.lcov
+
+# Ignore build or cache directories
+dist/
+build/
+.cache/
+
+# Ignore temporary files
+*.tmp
+*.swp
+
+# Ignore IDE/editor specific files
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# Ignore npm or Yarn debug files
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Ignore .gitignore backup files
+.gitignore~
+
+# Ignore output files in the seeder folder, if any
+backend/seeder/*.js
+
+# Ignore frontend build files, if any
+frontend/dist/
+frontend/build/
+frontend/*.tmp
+frontend/*.log
+
+# Ignore specific JSON files, if they're for testing only
+product.json
