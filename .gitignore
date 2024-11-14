@@ -43,11 +43,5 @@ yarn-error.log*
 # Ignore output files in the seeder folder, if any
 backend/seeder/*.js
 
-# Ignore frontend build files, if any
-frontend/dist/
-frontend/build/
-frontend/*.tmp
-frontend/*.log
-
 # Ignore specific JSON files, if they're for testing only
 product.json
