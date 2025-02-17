@@ -1,7 +1,7 @@
-const express = require('express');
+import express from 'express';
 const router = express.Router();
 
-const {
+import {
     registerUser,
     loginUser,
     forgotPassword,
@@ -14,28 +14,26 @@ const {
     getUserDetails,
     updateUser,
     deleteUser
+} from '../controllers/authController.js';
 
-} = require('../controllers/authController');
-
-
-const { isAuthenticatedUser, authorizeRoles } = require('../middlewares/auth')
+import { isAuthenticatedUser, authorizeRoles } from '../middlewares/auth.js';
 
 router.route('/register').post(registerUser);
 router.route('/login').post(loginUser);
 
-router.route('/password/forgot').post(forgotPassword)
-router.route('/password/reset/:token').put(resetPassword)
+router.route('/password/forgot').post(forgotPassword);
+router.route('/password/reset/:token').put(resetPassword);
 
 router.route('/logout').get(logout);
 
-router.route('/me').get(isAuthenticatedUser, getUserProfile)
-router.route('/password/update').put(isAuthenticatedUser, updatePassword)
-router.route('/me/update').put(isAuthenticatedUser, updateProfile)
+router.route('/me').get(isAuthenticatedUser, getUserProfile);
+router.route('/password/update').put(isAuthenticatedUser, updatePassword);
+router.route('/me/update').put(isAuthenticatedUser, updateProfile);
 
-router.route('/admin/users').get(isAuthenticatedUser, authorizeRoles('admin'), allUsers)
+router.route('/admin/users').get(isAuthenticatedUser, authorizeRoles('admin'), allUsers);
 router.route('/admin/user/:id')
     .get(isAuthenticatedUser, authorizeRoles('admin'), getUserDetails)
     .put(isAuthenticatedUser, authorizeRoles('admin'), updateUser)
-    .delete(isAuthenticatedUser, authorizeRoles('admin'), deleteUser)
+    .delete(isAuthenticatedUser, authorizeRoles('admin'), deleteUser);
 
-module.exports = router;
+export default router;

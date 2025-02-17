@@ -1,14 +1,11 @@
-const express = require('express')
+import express from "express";
 const router = express.Router();
 
-const {
-    processPayment,
-    sendStripApi
-} = require('../controllers/paymentController')
+import { processPayment, sendStripApi } from "../controllers/paymentController.js";
 
-const { isAuthenticatedUser } = require('../middlewares/auth')
+import { isAuthenticatedUser } from "../middlewares/auth.js";
 
-router.route('/payment/process').post(isAuthenticatedUser, processPayment);
-router.route('/stripeapi').get(isAuthenticatedUser, sendStripApi);
+router.route("/payment/process").post(isAuthenticatedUser, processPayment);
+router.route("/stripeapi").get(isAuthenticatedUser, sendStripApi);
 
-module.exports = router;
+export default router;
