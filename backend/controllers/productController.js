@@ -46,11 +46,11 @@ export const getProducts = catchAsyncErrors(async (req, res, next) => {
         .search()
         .filter();
 
-    let products = await apiFeatures.query;
+    let products = await apiFeatures.query.clone();
     let filteredProductsCount = products.length;
 
     apiFeatures.pagination(resPerPage);
-    products = await apiFeatures.query;
+    products = await apiFeatures.query.clone();
 
     res.status(200).json({
         success: true,
@@ -73,6 +73,7 @@ export const getAdminProducts = catchAsyncErrors(async (req, res, next) => {
 
 // Get single product details   =>   /api/v1/product/:id
 export const getSingleProduct = catchAsyncErrors(async (req, res, next) => {
+    console.log(req.params)
     const product = await Product.findById(req.params.id);
 
     if (!product) {

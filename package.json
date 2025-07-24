@@ -1,29 +1,35 @@
 {
-  "name": "shopit",
+  "name": "luxemart",
+  "type": "module",
   "version": "1.0.0",
   "description": "full ecommerce site using mern",
   "main": "server.js",
+  "experiments": {
+    "jsonModules": true
+  },
   "scripts": {
     "start": "SET node backend/server.js",
-    "dev": "SET NODE_ENV=DEVELOPMENT& nodemon backend/server",
-    "prod": "SET NODE_ENV=PRODUCTION& nodemon backend/server",
+    "dev": "SET NODE_ENV=DEVELOPMENT& nodemon backend/server.js",
+    "prod": "SET NODE_ENV=PRODUCTION node backend/server.js",
     "seeder": "node backend/utils/seeder.js",
     "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false && npm install --prefix frontend && npm run build --prefix frontend"
   },
-  "author": "Ghulam Abbas",
+  "author": "Jatin kumar",
   "license": "ISC",
   "dependencies": {
     "bcryptjs": "^2.4.3",
     "body-parser": "^1.20.3",
     "cloudinary": "^1.23.0",
     "cookie-parser": "^1.4.5",
+    "cors": "^2.8.5",
     "dotenv": "^8.2.0",
     "express": "^4.21.2",
     "express-fileupload": "^1.5.1",
     "jsonwebtoken": "^9.0.2",
+    "luxemart": "file:",
+    "Luxemart": "file:",
     "mongoose": "^8.10.1",
     "nodemailer": "^6.10.0",
-    "shopit": "file:",
     "stripe": "^8.128.0",
     "validator": "^13.12.0"
   },

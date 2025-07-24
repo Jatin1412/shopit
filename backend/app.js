@@ -11,14 +11,22 @@ import products from "./routes/product.js";
 import auth from "./routes/auth.js";
 import payment from "./routes/payment.js";
 import order from "./routes/order.js";
-import connectDatabase from './config/database.js'
+import connectDatabase from "./config/database.js";
+import cors from "cors";
 
 const app = express();
 
-// Setting up config file 
+// Setting up config file
 if (process.env.NODE_ENV !== "PRODUCTION") {
-    dotenv.config({ path: "backend/config/config.env" });
+  dotenv.config({ path: "backend/config/config.env" });
 }
+
+app.use(
+  cors({
+    origin: "http://localhost:5173", // Adjust based on your frontend URL
+    credentials: true,
+  })
+);
 
 app.use(express.json());
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -38,11 +46,11 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 
 if (process.env.NODE_ENV === "PRODUCTION") {
-    app.use(express.static(path.join(__dirname, "../frontend/build")));
+  app.use(express.static(path.join(__dirname, "../frontend/build")));
 
-    app.get("*", (req, res) => {
-        res.sendFile(path.resolve(__dirname, "../frontend/build/index.html"));
-    });
+  app.get("*", (req, res) => {
+    res.sendFile(path.resolve(__dirname, "../frontend/build/index.html"));
+  });
 }
 
 // Middleware to handle errors
